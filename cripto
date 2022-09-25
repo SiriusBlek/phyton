@@ -1,0 +1,14 @@
+from urllib import response
+import requests
+user_input = str(input("What cripto you whant?"))
+
+response = requests.get("https://api.coincap.io/v2/assets?"+user_input.lower())
+
+if response.status_code !=200:
+    print("Err try again")
+else:
+    print("CriptoID: ", response.json()['data']['id'])
+    print("Rank: ",response.json()['data']['rank'])
+    print("Criptocurrency: ", response.json()['data']['name'])    
+    print("Market Cap (USD): ",response.json()['data']['marketCapUsd'])
+    print("PriceUsd: ",response.json()['data']['priceUsd'])
